@@ -18,7 +18,8 @@ export default function CheckoutPage() {
       return;
     }
 
-    const reference = "ORDER-" + Date.now();
+    const reference = `ORDER-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+
     const publicKey = process.env.NEXT_PUBLIC_WOMPI_PUBLIC_KEY;
 
     if (!publicKey) {
@@ -26,28 +27,50 @@ export default function CheckoutPage() {
       return;
     }
 
-    const redirectUrl = "https://pravice-store.vercel.app/confirmacion";
+    // 🔥 Detecta automáticamente si es TEST o PROD
+    const isProd = publicKey.includes("prod");
+
+    const wompiUrl = isProd
+      ? "https://checkout.wompi.co/p/"
+      : "https://sandbox.checkout.wompi.co/p/";
+
+    // 🔥 Usa variable de entorno para URL base
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
+    if (!baseUrl) {
+      alert("Error: Falta la URL base.");
+      return;
+    }
+
+    const redirectUrl = `${baseUrl}/confirmacion`;
 
     const checkoutUrl =
-      `https://checkout.wompi.co/p/?public-key=${publicKey}` +
+      `${wompiUrl}?public-key=${publicKey}` +
       `&currency=COP` +
       `&amount-in-cents=${subtotal * 100}` +
       `&reference=${reference}` +
       `&redirect-url=${redirectUrl}`;
+
+    // 🔎 DEBUG (puedes quitar luego)
+    console.log({
+      isProd,
+      wompiUrl,
+      subtotal,
+      amountInCents: subtotal * 100,
+      reference,
+      redirectUrl,
+    });
 
     window.location.href = checkoutUrl;
   };
 
   return (
     <>
-      {/* LINK ARRIBA */}
       <Link href="/cart" className={styles.backTop}>
         ← Regresar al carro de compras
       </Link>
 
-      {/* CONTENIDO PRINCIPAL */}
       <div className={styles.container}>
-        {/* FORMULARIO */}
         <section className={styles.formSection}>
           <h2 className={styles.title}>Detalles De Facturación</h2>
 
@@ -115,7 +138,6 @@ export default function CheckoutPage() {
           </form>
         </section>
 
-        {/* RESUMEN */}
         <aside className={styles.orderSection}>
           <h2 className={styles.title}>Tu Pedido</h2>
 
