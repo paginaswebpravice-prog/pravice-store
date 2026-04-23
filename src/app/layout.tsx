@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     "Riesgos Laborales",
     "Derecho Laboral",
   ],
+  other: {
+    "google-site-verification": "Sjvr4v7EGRfdGd1hqq8XTBMdqvhfUlmZSvvsfo5lKmo",
+  },
   openGraph: {
     title: "Inicio reforma laboral",
     description: "Inicio reforma laboral",

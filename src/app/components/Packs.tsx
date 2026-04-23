@@ -159,7 +159,7 @@ export default function Packs() {
               </motion.span>
             )}
 
-            <h3>{pack.name} - reforma laboral 2026</h3>
+            <h3>{pack.name}</h3>
 
             <div
               className={styles.price}
