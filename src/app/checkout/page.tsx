@@ -131,9 +131,38 @@ export default function CheckoutPage() {
 
               <select className={styles.select} required>
                 <option value="">Departamento</option>
+                <option>Amazonas</option>
                 <option>Antioquia</option>
+                <option>Arauca</option>
+                <option>Atlántico</option>
+                <option>Bolívar</option>
+                <option>Boyacá</option>
+                <option>Caldas</option>
+                <option>Caquetá</option>
+                <option>Casanare</option>
+                <option>Cauca</option>
+                <option>Cesar</option>
+                <option>Chocó</option>
+                <option>Córdoba</option>
                 <option>Cundinamarca</option>
+                <option>Guainía</option>
+                <option>Guaviare</option>
+                <option>Huila</option>
+                <option>La Guajira</option>
+                <option>Magdalena</option>
+                <option>Meta</option>
+                <option>Nariño</option>
+                <option>Norte de Santander</option>
+                <option>Putumayo</option>
+                <option>Quindío</option>
+                <option>Risaralda</option>
+                <option>San Andrés y Providencia</option>
+                <option>Santander</option>
+                <option>Sucre</option>
+                <option>Tolima</option>
                 <option>Valle del Cauca</option>
+                <option>Vaupés</option>
+                <option>Vichada</option>
               </select>
             </div>
 

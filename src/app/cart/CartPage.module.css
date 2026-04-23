@@ -4,18 +4,20 @@
 .container {
   max-width: 1150px;
   margin: auto;
-  padding: 40px 20px;
+  padding: 50px 20px;
 }
 
 .title {
-  font-size: 36px;
+  font-size: 38px;
   font-weight: 800;
   color: #004a80;
+  margin-bottom: 5px;
 }
 
 .subtitle {
-  margin-bottom: 20px;
-  color: #808080;
+  margin-bottom: 25px;
+  color: #6b7280;
+  font-size: 15px;
 }
 
 /* ============================
@@ -25,13 +27,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #e8f6ff; /* tono suave basado en #5eb3e4 */
-  border-left: 4px solid #5eb3e4;
-  padding: 14px 18px;
-  border-radius: 6px;
-  margin-bottom: 25px;
+  background: linear-gradient(135deg, #e8f6ff, #d7efff);
+  border-left: 5px solid #5eb3e4;
+  padding: 16px 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
   color: #004a80;
   font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .alert span {
@@ -44,7 +47,7 @@
   padding: 8px 22px;
   border-radius: 30px;
   font-weight: 600;
-  transition: 0.2s ease;
+  transition: 0.25s ease;
 }
 
 .viewCart:hover {
@@ -62,14 +65,13 @@
 }
 
 /* ============================
-   TABLA DE PRODUCTOS
+   TABLA
 ============================ */
 .tableBox {
   background: #fff;
-  border: 1px solid #cdd6dd;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
 .table {
@@ -80,33 +82,64 @@
 .table th {
   background: #004a80;
   color: #fff;
-  padding: 14px;
+  padding: 16px;
   text-align: left;
   font-weight: 700;
   font-size: 15px;
 }
 
 .table td {
-  padding: 14px;
-  border-bottom: 1px solid #e6e6e6;
-  color: #000;
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #111;
 }
 
+/* Hover fila */
+.table tr:hover {
+  background: #f9fbfc;
+}
+
+/* Producto */
 .product {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
+  font-weight: 600;
 }
 
+/* Input cantidad */
 .table input {
-  width: 55px;
-  padding: 6px;
-  border: 1px solid #cdd6dd;
-  border-radius: 4px;
+  width: 60px;
+  padding: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  text-align: center;
+  transition: 0.2s ease;
+}
+
+.table input:focus {
+  outline: none;
+  border-color: #5eb3e4;
+  box-shadow: 0 0 0 2px rgba(94, 179, 228, 0.2);
 }
 
 .bold {
   font-weight: bold;
+  color: #000;
+}
+
+/* Botón eliminar */
+.table button {
+  background: transparent;
+  border: none;
+  color: #c4911a;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.table button:hover {
+  color: #ff4d4f;
 }
 
 /* ============================
@@ -115,35 +148,43 @@
 .coupon {
   display: flex;
   justify-content: space-between;
-  padding: 15px;
+  padding: 20px;
   gap: 15px;
+  border-top: 1px solid #eee;
 }
 
 .coupon div {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   align-items: center;
 }
 
 .coupon input {
-  padding: 8px;
-  border: 1px solid #808080;
-  border-radius: 5px;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.coupon input:focus {
+  outline: none;
+  border-color: #5eb3e4;
 }
 
 .coupon button {
   background: linear-gradient(145deg, #f4c300, #c4911a);
   color: #000;
   border: none;
-  padding: 9px 18px;
-  border-radius: 25px;
+  padding: 10px 20px;
+  border-radius: 30px;
   font-weight: 700;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: 0.25s ease;
 }
 
 .coupon button:hover {
-  filter: brightness(1.15);
+  transform: translateY(-1px);
+  filter: brightness(1.1);
 }
 
 .updateBtn {
@@ -155,62 +196,87 @@
    TOTAL
 ============================ */
 .totalBox {
-  border: 1px solid #cdd6dd;
-  padding: 25px;
-  border-radius: 10px;
+  padding: 28px;
+  border-radius: 14px;
   background: #ffffff;
   height: fit-content;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
 }
 
 .totalBox h3 {
   margin-bottom: 20px;
   color: #004a80;
+  font-size: 20px;
 }
 
 .row {
   display: flex;
   justify-content: space-between;
-  margin: 12px 0;
-  color: #000;
+  margin: 14px 0;
+  color: #111;
 }
 
 .total {
   font-weight: bold;
-  font-size: 18px;
+  font-size: 20px;
+  color: #004a80;
 }
 
+/* BOTÓN PRINCIPAL */
 .checkout {
   width: 100%;
-  margin-top: 20px;
-  background: #004a80;
+  margin-top: 25px;
+  background: linear-gradient(135deg, #004a80, #006bb3);
   color: white;
-  padding: 14px;
-  border-radius: 35px;
+  padding: 16px;
+  border-radius: 40px;
   border: none;
   cursor: pointer;
   font-size: 17px;
   font-weight: 700;
-  transition: 0.25s ease;
+  transition: 0.3s ease;
 }
 
 .checkout:hover {
-  background: #5eb3e4;
+  background: linear-gradient(135deg, #5eb3e4, #3aa0d8);
   color: #004a80;
+  transform: translateY(-2px);
 }
 
 /* ============================
    LINK VOLVER
 ============================ */
 .back {
-  display: block;
-  margin-top: 30px;
-  color: #5eb3e4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  margin: 40px auto 0;
+  padding: 12px 22px;
+
+  border-radius: 30px;
+  border: 2px solid #5eb3e4;
+
+  color: #004a80;
   font-weight: 600;
+  font-size: 15px;
+
+  text-decoration: none;
+
+  background: transparent;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
 }
 
+/* Hover */
 .back:hover {
-  color: #004a80;
+  background: #5eb3e4;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(94, 179, 228, 0.3);
 }
 
 /* ============================
@@ -219,5 +285,9 @@
 @media (max-width: 900px) {
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .table td {
+    font-size: 14px;
   }
 }

@@ -12,7 +12,7 @@ export default function CartPage() {
 
   const subtotal = cart.reduce(
     (total: number, item: any) => total + item.price * item.quantity,
-    0
+    0,
   );
 
   return (
