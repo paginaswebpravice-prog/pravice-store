@@ -8,7 +8,8 @@ export default function ConfirmacionPage() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const transactionId = params.get("id");
+
+    const transactionId = params.get("id") || params.get("transaction_id");
 
     if (!transactionId) {
       setStatus("Transacción no encontrada");
@@ -25,14 +26,21 @@ export default function ConfirmacionPage() {
           return;
         }
 
+        if (!result || !result.reference) {
+          setStatus("Error en la respuesta");
+          return;
+        }
+
         setData(result);
 
         if (result.approved) {
           setStatus("✅ Pago aprobado");
         } else if (result.status === "DECLINED") {
           setStatus("❌ Pago rechazado");
+        } else if (result.status === "PENDING") {
+          setStatus("⏳ Pago pendiente");
         } else {
-          setStatus("⏳ Pago en proceso");
+          setStatus("⚠️ Error en el pago");
         }
       } catch (error) {
         setStatus("Error en la conexión");

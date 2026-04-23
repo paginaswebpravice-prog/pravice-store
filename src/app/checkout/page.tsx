@@ -12,7 +12,7 @@ export default function CheckoutPage() {
     0,
   );
 
-  const handlePayment = () => {
+  const handlePayment = async () => {
     if (subtotal <= 0) {
       alert("Tu carrito está vacío.");
       return;
@@ -27,14 +27,8 @@ export default function CheckoutPage() {
       return;
     }
 
-    // 🔥 Detecta automáticamente si es TEST o PROD
-    const isProd = publicKey.includes("prod");
+    const wompiUrl = "https://checkout.wompi.co/p/";
 
-    const wompiUrl = isProd
-      ? "https://checkout.wompi.co/p/"
-      : "https://sandbox.checkout.wompi.co/p/";
-
-    // 🔥 Usa variable de entorno para URL base
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
     if (!baseUrl) {
@@ -42,26 +36,53 @@ export default function CheckoutPage() {
       return;
     }
 
+    const amountInCents = Math.round(subtotal * 100);
+    const currency = "COP";
     const redirectUrl = `${baseUrl}/confirmacion`;
 
-    const checkoutUrl =
-      `${wompiUrl}?public-key=${publicKey}` +
-      `&currency=COP` +
-      `&amount-in-cents=${subtotal * 100}` +
-      `&reference=${reference}` +
-      `&redirect-url=${redirectUrl}`;
+    try {
+      // 🔥 NUEVO: pedir firma al backend
+      const res = await fetch("/api/wompi/signature", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          reference,
+          amountInCents,
+          currency,
+        }),
+      });
 
-    // 🔎 DEBUG (puedes quitar luego)
-    console.log({
-      isProd,
-      wompiUrl,
-      subtotal,
-      amountInCents: subtotal * 100,
-      reference,
-      redirectUrl,
-    });
+      const data = await res.json();
 
-    window.location.href = checkoutUrl;
+      if (!data.signature) {
+        alert("Error generando firma");
+        return;
+      }
+
+      const checkoutUrl =
+        `${wompiUrl}?public-key=${publicKey}` +
+        `&currency=${currency}` +
+        `&amount-in-cents=${amountInCents}` +
+        `&reference=${reference}` +
+        `&signature:integrity=${data.signature}` + // 🔥 NUEVO
+        `&redirect-url=${redirectUrl}`;
+
+      // 🔎 DEBUG
+      console.log({
+        wompiUrl,
+        subtotal,
+        amountInCents,
+        reference,
+        redirectUrl,
+      });
+
+      window.location.href = checkoutUrl;
+    } catch (error) {
+      console.error(error);
+      alert("Error iniciando el pago");
+    }
   };
 
   return (
