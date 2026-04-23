@@ -135,16 +135,18 @@ export default function FAQ() {
         </div>
 
         {/* CAJA FINAL */}
-        <p className={styles.boxTitle}>
-          ¿Necesitas orientación antes de comprar?
-        </p>
-        <p className={styles.boxText}>
-          Habla directamente con un asesor legal y resuelve tus dudas en
-          minutos. Te ayudamos a elegir el pack adecuado para tu empresa.
-        </p>
-        <button className={styles.button} onClick={handleClick}>
-          Hablar por WhatsApp
-        </button>
+        <div className={styles.box}>
+          <p className={styles.boxTitle}>
+            ¿Necesitas orientación antes de comprar?
+          </p>
+          <p className={styles.boxText}>
+            Habla directamente con un asesor legal y resuelve tus dudas en
+            minutos. Te ayudamos a elegir el pack adecuado para tu empresa.
+          </p>
+          <button className={styles.button} onClick={handleClick}>
+            Hablar por WhatsApp
+          </button>
+        </div>
       </section>
     </>
   );
