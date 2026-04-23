@@ -9,7 +9,7 @@ export default function CheckoutPage() {
 
   const subtotal = cart.reduce(
     (total: number, item: any) => total + item.price * item.quantity,
-    0
+    0,
   );
 
   const handlePayment = () => {
@@ -26,7 +26,7 @@ export default function CheckoutPage() {
       return;
     }
 
-    const redirectUrl = "https://tu-dominio.com/confirmacion";
+    const redirectUrl = "https://pravice-store.vercel.app/confirmacion";
 
     const checkoutUrl =
       `https://checkout.wompi.co/p/?public-key=${publicKey}` +
