@@ -153,7 +153,7 @@ export default function CheckoutPage() {
               {cart.map((item: any) => (
                 <tr key={item.id}>
                   <td className={styles.td}>
-                    {item.name} × {item.quantity}
+                    {item.name} ×{item.quantity}
                   </td>
                   <td className={styles.td}>
                     ${(item.price * item.quantity).toLocaleString()}
@@ -187,7 +187,11 @@ export default function CheckoutPage() {
             </span>
           </label>
 
-          <button className={styles.payBtn} onClick={handlePayment}>
+          <button
+            type="button"
+            className={styles.payBtn}
+            onClick={handlePayment}
+          >
             REALIZAR EL PEDIDO
           </button>
         </aside>
