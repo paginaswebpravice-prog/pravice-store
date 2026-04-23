@@ -5,11 +5,42 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faFire } from "@fortawesome/free-solid-svg-icons";
 
+import { useEffect, useState } from "react";
+
 const handleClick = () => {
   window.open("https://api.whatsapp.com/send?phone=573206353180", "_blank");
 };
 
 export default function Footer() {
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  useEffect(() => {
+    let showTimer: NodeJS.Timeout;
+    let hideTimer: NodeJS.Timeout;
+
+    const loop = () => {
+      // aparece
+      showTimer = setTimeout(() => {
+        setShowTooltip(true);
+
+        // desaparece después de 4s visible
+        hideTimer = setTimeout(() => {
+          setShowTooltip(false);
+
+          // vuelve a ejecutarse el ciclo después de 6s oculto
+          setTimeout(loop, 6000);
+        }, 4000);
+      }, 2000); // espera inicial
+    };
+
+    loop();
+
+    return () => {
+      clearTimeout(showTimer);
+      clearTimeout(hideTimer);
+    };
+  }, []);
+
   return (
     <footer className={styles.footer}>
       {/* ========== PRE FOOTER / CTA ========== */}
@@ -79,13 +110,24 @@ export default function Footer() {
       </section>
 
       {/* ========== WHATSAPP FLOAT ========== */}
-      <button
-        className={styles.whatsappBtn}
-        aria-label="Contactar por WhatsApp"
-        onClick={handleClick}
-      >
-        <FontAwesomeIcon icon={faWhatsapp} />
-      </button>
+      <div className={styles.whatsappWrapper}>
+        <div
+          className={`${styles.whatsappTooltip} ${
+            showTooltip ? styles.visible : styles.hidden
+          }`}
+        >
+          💬 ¿Tienes dudas antes de comprar? <br />
+          Habla con un asesor legal en este momento.
+        </div>
+
+        <button
+          className={styles.whatsappBtn}
+          onClick={handleClick}
+          aria-label="Contactar por WhatsApp"
+        >
+          <FontAwesomeIcon icon={faWhatsapp} />
+        </button>
+      </div>
     </footer>
   );
 }

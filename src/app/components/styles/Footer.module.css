@@ -1,3 +1,4 @@
+/* ========== FOOTER BASE ========== */
 .footer {
   margin-top: 80px;
   background: #0b0f14;
@@ -96,17 +97,83 @@
 }
 
 /* ========== WHATSAPP FLOAT ========== */
-.whatsappBtn {
+.whatsappWrapper {
   position: fixed;
   bottom: 25px;
   right: 25px;
-  width: 55px;
-  height: 55px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 9999; /* 🔥 clave para que NO quede detrás */
+}
+
+.whatsappBtn {
+  width: 58px;
+  height: 58px;
   background: #25d366;
   border-radius: 50%;
   border: none;
   color: white;
   font-size: 26px;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease;
+}
+
+.whatsappBtn:hover {
+  transform: scale(1.08);
+}
+
+/* ========== TOOLTIP WHATSAPP ========== */
+.whatsappTooltip {
+  background: #ffffff;
+  color: #004a80;
+  font-size: 13px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  max-width: 240px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+  font-weight: 600;
+  line-height: 1.4;
+  position: relative;
+
+  /* 🔥 animación */
+  animation: fadeInUp 0.4s ease;
+}
+
+/* flechita */
+.whatsappTooltip::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  right: 18px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: #ffffff transparent transparent transparent;
+}
+
+/* oculto */
+.hidden {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+
+/* visible */
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* animación */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
