@@ -23,7 +23,7 @@ const packs: Pack[] = [
   {
     id: 1,
     name: "Pack Express",
-    price: 299000,
+    price: 1000,
     description:
       "Ideal para micro y pequeñas empresas que necesitan cumplir la Reforma Laboral 2026 sin sanciones.",
     color: styles.express,

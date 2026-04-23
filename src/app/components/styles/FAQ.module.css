@@ -34,7 +34,7 @@
 
 .iconGreen {
   font-size: 40px;
-  color: #25d366; /* WhatsApp (se mantiene intacto) */
+  color: #25d366; /* WhatsApp */
 }
 
 /* ========= SECCIÓN FAQ ========= */
@@ -49,12 +49,12 @@
   font-size: 36px;
   font-weight: 800;
   text-align: center;
-  color: #004a80; /* Azul principal */
+  color: #004a80;
 }
 
 .subtitle {
   text-align: center;
-  color: #5eb3e4; /* Celeste acento */
+  color: #5eb3e4;
   margin-top: 10px;
   font-size: 17px;
   margin-bottom: 40px;
@@ -66,7 +66,7 @@
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
-  border: 2px solid #5eb3e4; /* borde celeste */
+  border: 2px solid #5eb3e4;
 }
 
 .faqItem {
@@ -85,29 +85,31 @@
   align-items: center;
   gap: 10px;
   font-weight: 600;
-  color: #004a80; /* Azul principal */
+  color: #004a80;
   transition: background 0.25s ease;
 }
 
 .question:hover {
-  background: #f4c30022; /* Amarillo suave */
+  background: #f4c30022;
 }
 
 .questionOpen {
-  background: #f7c60033; /* Amarillo claro suave */
+  background: #f7c60033;
 }
 
 /* Icono + / - */
 .iconSign {
   font-size: 22px;
   font-weight: bold;
-  color: #c4911a; /* Oro oscuro */
-  transition: transform 0.3s ease, color 0.3s ease;
+  color: #c4911a;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
 }
 
 .iconSignOpen {
   transform: rotate(180deg);
-  color: #5eb3e4; /* Celeste */
+  color: #5eb3e4;
 }
 
 /* Respuesta animada */
@@ -119,7 +121,9 @@
   line-height: 1.5;
   overflow: hidden;
   max-height: 0;
-  transition: max-height 0.35s ease, padding 0.3s ease;
+  transition:
+    max-height 0.35s ease,
+    padding 0.3s ease;
 }
 
 .answerOpen {
@@ -127,39 +131,51 @@
   max-height: 500px;
 }
 
-/* ========= CAJA FINAL ========= */
+/* ========= CAJA FINAL (CTA MEJORADO) ========= */
 
 .box {
-  margin: 40px auto;
-  padding: 40px;
+  margin: 80px auto 20px; /* 🔥 separación real del FAQ */
+  padding: 32px;
   border-radius: 14px;
   text-align: center;
-  background: #5eb3e4; /* Celeste */
+  background: linear-gradient(135deg, #5eb3e4, #3aa0d8); /* 🔥 más visual */
   max-width: 500px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  border: 2px solid #ffffff40; /* 🔥 efecto “encerrado” */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* 🔥 más profundidad */
+  transform: translateY(20px); /* 🔥 efecto flotante */
+  position: relative;
+  z-index: 2;
 }
 
 .boxTitle {
   font-size: 22px;
   font-weight: 700;
-  color: #004a80; /* Azul principal */
-  margin-bottom: 20px;
+  color: #004a80;
+  margin-bottom: 10px;
+}
+
+.boxText {
+  font-size: 14px;
+  color: #003b66;
+  line-height: 1.4;
+  margin-bottom: 16px;
 }
 
 .button {
-  background: #f4c300; /* Amarillo */
+  background: #f4c300;
   color: #000;
-  padding: 14px 30px;
+  padding: 12px 26px;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 15px;
   cursor: pointer;
   font-weight: 700;
   transition: 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* 🔥 más CTA */
 }
 
 .button:hover {
-  background: #c4911a; /* Oro oscuro */
+  background: #c4911a;
   color: #fff;
 }
 
