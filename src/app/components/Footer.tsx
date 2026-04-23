@@ -59,7 +59,7 @@ export default function Footer() {
           <div className={styles.banner}>
             <FontAwesomeIcon icon={faFire} />
             <span>
-              Oferta limitada: los precios aumentarán después del 31 de enero
+              Oferta limitada: los precios aumentarán después del 31 de junio
             </span>
           </div>
         </div>
